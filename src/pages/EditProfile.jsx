@@ -4,7 +4,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { updateUserById } from "../modules/fetch/editusers/index";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-//import { instance } from "../axios/index"; // Import the 'instance' from Axios
 
 const EditProfile = () => {
   const [formData, setFormData] = useState({
@@ -14,10 +13,11 @@ const EditProfile = () => {
     phone: "",
     role: "",
     about: "",
-    skills: "",
+    skill: "",
   });
 
   const handleChange = (e) => {
+    console.log("Handling change:", e.target.name, e.target.value);
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -93,7 +93,7 @@ const EditProfile = () => {
           phone: userData.phone,
           role: userData.role,
           about: userData.about,
-          skills: userData.skills,
+          skill: userData.skill,
         });
       } catch (error) {
         console.error("Error fetching user data:", error.message);
@@ -188,7 +188,7 @@ const EditProfile = () => {
             htmlFor="role"
             className="block text-sm font-medium text-gray-700"
           >
-            Peran
+            Roll
           </label>
           <select
             id="role"
@@ -197,7 +197,6 @@ const EditProfile = () => {
             onChange={handleChange}
             className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-indigo-300"
           >
-            <option value="" label="-------Pilih Salah Satu-------" />
             <option value="user" label="User" />
             <option value="company" label="Perusahaan" />
           </select>
@@ -205,10 +204,10 @@ const EditProfile = () => {
         {/* Form Field: About User */}
         <div className="mb-6">
           <label
-            htmlFor="aboutUser"
+            htmlFor="about"
             className="block text-sm font-medium text-gray-700"
           >
-            About You
+            About User
           </label>
           <textarea
             id="about"
@@ -219,20 +218,19 @@ const EditProfile = () => {
             className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-indigo-300"
           />
         </div>
-        {/* Form Field: Skills User */}
         <div className="mb-6">
           <label
-            htmlFor="skillsUser"
+            htmlFor="skill"
             className="block text-sm font-medium text-gray-700"
           >
-            Keahlian/Skill
+            Skill
           </label>
           <textarea
-            id="skills"
-            name="skills"
-            value={formData.skills}
+            id="skill"
+            name="skill"
+            value={formData.skill}
             onChange={handleChange}
-            rows="3"
+            rows="4"
             className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-indigo-300"
           />
         </div>
@@ -242,7 +240,7 @@ const EditProfile = () => {
             type="submit"
             className="px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
-            Simpan Profil
+            Save Profil
           </button>
         </div>
       </form>
