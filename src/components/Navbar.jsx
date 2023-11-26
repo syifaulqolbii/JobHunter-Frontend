@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 
 const Navbar = () => {
@@ -64,10 +64,10 @@ const Navbar = () => {
                                                role="menuitem">Kanban</a>
                                         </li>
                                         <li>
-                                            <Link to="/createJob" >
-                                            <a
-                                               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                               role="menuitem">Job List</a>
+                                            <Link to="/createJob">
+                                                <a
+                                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                    role="menuitem">Job List</a>
                                             </Link>
                                         </li>
                                         <li>
@@ -82,78 +82,74 @@ const Navbar = () => {
                     </div>
                 </div>
                 <div
-                  className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
-                  id="dropdown-user"
+                    className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
+                    id="dropdown-user"
                 >
-                  <div className="px-4 py-3" role="none">
-                    <p
-                      className="text-sm text-gray-900 dark:text-white"
-                      role="none"
-                    >
-                      Neil Sims
-                    </p>
-                    <p
-                      className="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
-                      role="none"
-                    >
-                      neil.sims@flowbite.com
-                    </p>
-                  </div>
-                  <ul className="py-1" role="none">
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                        role="menuitem"
-                      >
-                        Dashboard
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                        role="menuitem"
-                      >
-                        Kanban
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                        role="menuitem"
-                      >
-                        Job List
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                        role="menuitem"
-                      >
-                        Edit Profile
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                        role="menuitem"
-                      >
-                        Sign out
-                      </a>
-                    </li>
-                  </ul>
+                    <div className="px-4 py-3" role="none">
+                        <p
+                            className="text-sm text-gray-900 dark:text-white"
+                            role="none"
+                        >
+                            Neil Sims
+                        </p>
+                        <p
+                            className="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
+                            role="none"
+                        >
+                            neil.sims@flowbite.com
+                        </p>
+                    </div>
+                    <ul className="py-1" role="none">
+                        <li>
+                            <a
+                                href="#"
+                                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                                role="menuitem"
+                            >
+                                Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                                role="menuitem"
+                            >
+                                Kanban
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                                role="menuitem"
+                            >
+                                Job List
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                                role="menuitem"
+                            >
+                                Edit Profile
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                                role="menuitem"
+                            >
+                                Sign out
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </>
-  );
+            </nav>
+        </>
+    );
 };
 
 export default Navbar;
