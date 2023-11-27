@@ -1,3 +1,7 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+
 const Navbar = () => {
     return (
         <>
@@ -60,9 +64,11 @@ const Navbar = () => {
                                                role="menuitem">Kanban</a>
                                         </li>
                                         <li>
-                                            <a href="#"
+                                            <Link to="/createJob" >
+                                            <a
                                                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                                                role="menuitem">Job List</a>
+                                            </Link>
                                         </li>
                                         <li>
                                             <a href="#"

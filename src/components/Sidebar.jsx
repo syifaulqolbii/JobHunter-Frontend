@@ -1,3 +1,8 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
+
+
 const Sidebar = () => {
   return (
       <>
@@ -43,6 +48,18 @@ const Sidebar = () => {
                               <span className="flex-1 ms-3 whitespace-nowrap">Job List</span>
                           </a>
                       </li>
+                      <li>
+                      <Link to="/createJob" >
+                          <a
+                             className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                              <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 5.757v8.486M5.757 10h8.486M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                              </svg>
+                              <span className="flex-1 ms-3 whitespace-nowrap">Create Job</span>
+                          </a>
+                          </Link>
+                      </li>
+                     
                   </ul>
               </div>
           </aside>

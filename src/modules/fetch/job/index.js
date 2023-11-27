@@ -27,4 +27,13 @@ async function updateJob(id, formData) {
     }
 };
 
-export {getAllJobs, getJobById, updateJob};
+async function createJob(formData) {
+    try {
+      const response = await instance.post('jobs', formData);
+      return response.data;
+    } catch (error) {
+      throw new Error(error.response.data.message || 'Something went wrong');
+    }
+  }
+
+export {getAllJobs, getJobById, updateJob, createJob};

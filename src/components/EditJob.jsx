@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 import {getJobById, updateJob} from "../modules/fetch/job";
 
 const EditJob = () => {
@@ -35,11 +35,11 @@ const EditJob = () => {
             toast.success("Job updated", {
                 position: toast.POSITION.TOP_CENTER,
                 hideProgressBar: true,
-                autoClose: 5000,
+                autoClose: 3000,
             });
 
             // Redirect to JobList after successful update
-            navigate("/joblist");
+            // navigate("/joblist");
         } catch (error) {
             console.error("Error updating Job:", error.message);
             toast.error(`Error updating Job: ${error.message}`, {
@@ -115,8 +115,8 @@ const EditJob = () => {
                             value={formData.type}
                             onChange={handleChange}
                         >
-                                <option value="fulltime">Fulltime</option>
-                                <option value="parttime">Parttime</option>
+                                <option value="fulltime">Full Time</option>
+                                <option value="parttime">Part Time</option>
                                 <option value="freelance">Freelance</option>
                         </select>
                         </div>
@@ -181,6 +181,7 @@ const EditJob = () => {
                             >Cancel</button>
                     </div>        
                 </form>
+                <ToastContainer />
             </div>
         </div>
     )
