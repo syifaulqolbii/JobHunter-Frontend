@@ -9,7 +9,6 @@ const getUserIdFromToken = (token) => {
     return null;
   }
 };
-
 // Fungsi untuk pembaruan pengguna berdasarkan ID pengguna
 async function updateUserById(userId, formData) {
   try {
@@ -18,6 +17,7 @@ async function updateUserById(userId, formData) {
     return response.data;
   } catch (error) {
     console.error("Error updating user:", error.message);
+    // Jika ada pesan kesalahan dalam respons, gunakan pesan tersebut; jika tidak, gunakan pesan default
     throw new Error(error.response?.data?.message || "Something went wrong");
   }
 }
