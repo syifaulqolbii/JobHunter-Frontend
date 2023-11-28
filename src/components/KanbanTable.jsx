@@ -4,8 +4,6 @@ import {getAllKanbans, editStatusKanban} from "../modules/fetch/kanban";
 const KanbanTable = () => {
     const [kanbans, setKanbans] = useState([])
     const [loading, setLoading] = useState(true)
-
-
     const fetchKanbansData = async () => {
         try {
             const response = await getAllKanbans()
@@ -70,10 +68,19 @@ const KanbanTable = () => {
                             </td>
                             <td className="px-6 py-4">
                                 <div className="flex items-center">
-                                    <div className="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div>
+                                    {kanban.status === 'applied' ? (
+                                        <div className={`h-2.5 w-2.5 rounded-full bg-slate-600 me-2`}></div>
+                                    ) : kanban.status === 'accepted' ? (
+                                        <div className={`h-2.5 w-2.5 rounded-full bg-green-600 me-2`}></div>
+                                    ) : kanban.status === 'rejected' ? (
+                                        <div className={`h-2.5 w-2.5 rounded-full bg-red-600 me-2`}></div>
+                                    ) : kanban.status === 'process' ? (
+                                        <div className={`h-2.5 w-2.5 rounded-full bg-yellow-400 me-2`}></div>
+                                    ) : null}
                                     {kanban.status}
                                 </div>
                             </td>
+
                             <td className="px-6 py-4">
                                 <button data-modal-target={`large-modal-${index}`}
                                         data-modal-toggle={`large-modal-${index}`}
