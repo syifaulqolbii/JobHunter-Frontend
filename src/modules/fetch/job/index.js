@@ -18,6 +18,15 @@ async function getJobById(id) {
     }
 };
 
+async function getJobsByUserId(id) {
+    try {
+        const response = await instance.get(`/jobs/${id}`);
+        return response.data;
+    } catch (error) {
+        throw new Error(error.response.data.message || 'Something went wrong');
+    }
+};
+
 async function updateJob(id, formData) {
     try {
         const response = await instance.put(`/jobs/${id}`, formData);
@@ -36,4 +45,4 @@ async function createJob(formData) {
     }
   }
 
-export {getAllJobs, getJobById, updateJob, createJob};
+export {getAllJobs, getJobById, getJobsByUserId, updateJob, createJob};

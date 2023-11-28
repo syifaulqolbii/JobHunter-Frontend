@@ -38,8 +38,9 @@ const EditJob = () => {
                 autoClose: 3000,
             });
 
-            // Redirect to JobList after successful update
-            // navigate("/joblist");
+            setTimeout(() => {
+                navigate("/joblist");
+            }, 2000);
         } catch (error) {
             console.error("Error updating Job:", error.message);
             toast.error(`Error updating Job: ${error.message}`, {
