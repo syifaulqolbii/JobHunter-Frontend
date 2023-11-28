@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { updateUserById } from "../modules/fetch/editusers/index";
+import { instance } from "../modules/axios/index";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
 const EditProfile = () => {
   const [formData, setFormData] = useState({
+    profil: null, // Menggunakan null untuk merepresentasikan file yang belum dipilih
     name: "",
     email: "",
     address: "",
@@ -15,12 +17,50 @@ const EditProfile = () => {
     about: "",
     skill: "",
   });
+  const [saveMessage, setSaveMessage] = useState("");
 
   const handleChange = (e) => {
     console.log("Handling change:", e.target.name, e.target.value);
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+
+    // Validasi: Pastikan file yang diunggah adalah file gambar (boleh disesuaikan)
+    const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+    if (file && allowedTypes.includes(file.type)) {
+      const reader = new FileReader();
+
+      reader.onloadend = () => {
+        // Set state dengan data URI hasil pembacaan file
+        setFormData({
+          ...formData,
+          profil: file, // Menggunakan file langsung
+        });
+      };
+
+      // Membaca file sebagai data URI
+      reader.readAsDataURL(file);
+    } else {
+      // Menampilkan pesan error jika tipe file tidak sesuai
+      console.error("File yang diunggah harus berupa gambar (JPG, PNG, GIF)");
+      // Ganti pesan error dengan menggunakan toast atau cara lain untuk memberi tahu pengguna
+      toast.error("File yang diunggah harus berupa gambar (JPG, PNG, GIF)", {
+        position: toast.POSITION.TOP_CENTER,
+        hideProgressBar: true,
+        autoClose: 5000,
+      });
+    }
+  };
+
+  const handleDeletePhoto = () => {
+    setFormData({
+      ...formData,
+      profil: null,
     });
   };
 
@@ -87,6 +127,8 @@ const EditProfile = () => {
 
         // Mengupdate nilai formulir dengan data pengguna yang diterima
         setFormData({
+          ...formData,
+          profil: userData.profil,
           name: userData.name,
           email: userData.email,
           address: userData.address,
@@ -102,17 +144,63 @@ const EditProfile = () => {
     };
 
     fetchData(); // Panggil fungsi fetchData
-  }, []);
+  }, []); // Pastikan untuk menyertakan dependensi kosong agar efek ini hanya dijalankan sekali saat komponen mount
 
   return (
     <>
+      <style>
+        {`
+        body {
+          background-color: #F0F0F0;
+        }
+      `}
+      </style>
       <Navbar />
+      {saveMessage && (
+        <div
+          className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-md mb-4"
+          role="alert"
+        >
+          <strong className="font-bold">Success! </strong>
+          <span className="block sm:inline">{saveMessage}</span>
+        </div>
+      )}
       <form
-        className="max-w-md mx-auto p-8 bg-white shadow-md rounded pt-20"
+        className="max-w-xl mx-auto p-10 bg-white shadow-md rounded my-8" // Menyesuaikan max-w-md dan menambahkan margin (my-8)
         onSubmit={handleFormSubmit}
       >
-        <div className="text-center text-2xl font-bold mb-4 mt-4">
+        <div className="text-center text-2xl font-bold text-blue-700 mb-4 mt-4">
           Edit Profil
+        </div>
+        <div className="mb-6 flex justify-center">
+          <label htmlFor="profil" className="cursor-pointer">
+            <input
+              type="file"
+              id="profil"
+              name="profil"
+              accept="image/*"
+              onChange={handleImageChange}
+              className="hidden"
+            />
+            <img
+              className="h-40 w-40 rounded-full object-cover mx-auto cursor-pointer"
+              src={
+                formData.profil
+                  ? URL.createObjectURL(formData.profil)
+                  : "https://sassyboss.co/wp-content/uploads/2019/07/grava.gif"
+              }
+              alt="profil image"
+            />
+            <div className="flex justify-center mb-4 pt-1">
+              <button
+                type="button"
+                onClick={handleDeletePhoto}
+                className="ml-2 px-2 py-1 border border-black-400 rounded text-xs text-white hover:bg-blue-400 hover:text-white focus:outline-none focus:ring bg-blue-700"
+              >
+                Delete
+              </button>
+            </div>
+          </label>
         </div>
         {/* Form Field: Name */}
         <div className="mb-6">
@@ -120,7 +208,7 @@ const EditProfile = () => {
             htmlFor="name"
             className="block text-sm font-medium text-gray-700"
           >
-            Nama
+            Name
           </label>
           <input
             type="text"
@@ -154,7 +242,7 @@ const EditProfile = () => {
             htmlFor="address"
             className="block text-sm font-medium text-gray-700"
           >
-            Alamat
+            Address
           </label>
           <input
             type="text"
