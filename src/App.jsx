@@ -4,6 +4,10 @@ import PrivateRoute from './components/privateRoute.jsx';
 import Dashboard from "./pages/Dashboard";
 import EditProfile from "./pages/EditProfile";
 import ErrorBoundary from "./components/ErrorBoundary";
+import CreateJob from "./pages/CreateJob.jsx";
+import Homepage from "./pages/Homepage.jsx";
+import Login from "./pages/Login.jsx";
+import Register from "./pages/Register.jsx";
 function App() {
     return (
         <>
