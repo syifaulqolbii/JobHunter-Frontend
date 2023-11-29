@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'
-import Navbar from "../components/Navbar.jsx";
-import Sidebar from "../components/Sidebar.jsx";
+import React, {useState} from 'react';
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Navbar from '../components/Navbar.jsx';
+import Sidebar from '../components/Sidebar.jsx';
 
 import {createJob} from '../modules/fetch/job/index.js';
 
 const JobType = {
-  FULL_TIME: 'fulltime',
-  PART_TIME: 'parttime',
-  FREELANCE: 'freelance',
+    FULL_TIME: 'fulltime',
+    PART_TIME: 'parttime',
+    FREELANCE: 'freelance',
 };
 
 const CreateJob = () => {
-    
     const [formData, setFormData] = useState({
       job_name: '',
       type: JobType.FULL_TIME,
@@ -46,22 +45,49 @@ const CreateJob = () => {
         description: '',
         required_skill: '',
         salary: '',
-      });
 
-        console.log('Job created successfully');
-        toast.success('Job created successfully', {
-          position: toast.POSITION.TOP_CENTER, 
-          hideProgressBar: true, 
-          autoClose: 3000});
-        
-      } catch (error) {
-        console.error('Error creating job:', error.message);
-        toast.error('Error creating job', {
-          position: toast.POSITION.TOP_CENTER, 
-          hideProgressBar: true,
-          autoClose: 5000});
-        
-      }
+    });
+
+    const handleInputChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        });
+    };
+
+    const handleFormSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            await createJob(formData);
+
+            setFormData({
+                users_id: '',
+                job_name: '',
+                type: JobType.FULL_TIME,
+                category: '',
+                requirement: '',
+                description: '',
+                required_skill: '',
+                salary: '',
+            });
+
+            console.log('Job created successfully');
+            toast.success('Job created successfully', {
+                position: toast.POSITION.TOP_CENTER,
+                hideProgressBar: true,
+                autoClose: 3000
+            });
+
+        } catch (error) {
+            console.error('Error creating job:', error.message);
+            toast.error('Error creating job', {
+                position: toast.POSITION.TOP_CENTER,
+                hideProgressBar: true,
+                autoClose: 5000
+            });
+
+        }
     };
 
     return (

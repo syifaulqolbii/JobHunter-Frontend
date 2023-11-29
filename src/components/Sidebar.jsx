@@ -1,6 +1,7 @@
 import React from 'react';
-
-
+import Logout from './Logout';
+import { Link } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 
 const Sidebar = () => {
   return (
@@ -47,7 +48,16 @@ const Sidebar = () => {
                               <span className="flex-1 ms-3 whitespace-nowrap">Job List</span>
                           </a>
                       </li>
-                     
+                      <li>
+                          <a href="#"
+                             className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                              <svg className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                   viewBox="0 0 165 144" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M0.158691 0.130371V61.7191H61.7474V0.130371H0.158691ZM82.277 0.130371V20.6599H164.395V0.130371H82.277ZM82.277 41.1895V61.7191H143.866V41.1895H82.277ZM0.158691 82.2487V143.837H61.7474V82.2487H0.158691ZM82.277 82.2487V102.778H164.395V82.2487H82.277ZM82.277 123.308V143.837H143.866V123.308H82.277Z"
+                                        fill="currentColor"/></svg>
+                              <span className="flex-1 ms-3 whitespace-nowrap"><Logout /></span>
+                          </a>
+                      </li>
                   </ul>
               </div>
           </aside>
@@ -55,4 +65,4 @@ const Sidebar = () => {
   )
 }
 
-export default Sidebar
+export default Sidebar;
