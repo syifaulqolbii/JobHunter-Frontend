@@ -18,9 +18,9 @@ async function getJobById(id) {
     }
 };
 
-async function getJobsByUserId(id) {
+async function getJobsByUserId() {
     try {
-        const response = await instance.get(`/jobs/${id}`);
+        const response = await instance.get(`/jobs/userId`);
         return response.data;
     } catch (error) {
         throw new Error(error.response.data.message || 'Something went wrong');

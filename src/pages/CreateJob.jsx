@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { useMediaQuery } from 'react-responsive';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
+import Navbar from "../components/Navbar.jsx";
+import Sidebar from "../components/Sidebar.jsx";
 
 import {createJob} from '../modules/fetch/job/index.js';
 
@@ -12,10 +13,8 @@ const JobType = {
 };
 
 const CreateJob = () => {
-  const isWideScreen = useMediaQuery({ minWidth: 640 });
     
     const [formData, setFormData] = useState({
-      users_id: '',
       job_name: '',
       type: JobType.FULL_TIME,
       category: '',
@@ -40,7 +39,6 @@ const CreateJob = () => {
         await createJob(formData);
       
       setFormData({
-        users_id: '',
         job_name: '',
         type: JobType.FULL_TIME,
         category: '',
@@ -67,42 +65,49 @@ const CreateJob = () => {
     };
 
     return (
-      <div className={`lg:flex-1 p-8 pl-64 ml-4 relative${isWideScreen ? '' : 'w-full pl-0 pr-4 ml-0'}`}>
-          <h1 className="text-3xl font-bold font-poppins mb-4 pt-10">Create Job</h1>
-          <form onSubmit={handleFormSubmit}  >
-            <div className="grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div className="mb-4">
-              <label htmlFor="users_id" className="block text-sm font-bold font-poppins text-gray-600">
-                users_id
-              </label>
-              <input
-                type="number"
-                id="users_id"
-                name="users_id"
-                onChange={handleInputChange}
-                value={formData.users_id}
-                className="mt-1 p-2 border rounded-md w-full"
-                required
-              />
-            </div>
-    
-            <div className="mb-4">
-              <label htmlFor="job_name" className="block text-sm font-bold font-poppins text-gray-600">
+      <>
+      <Navbar/>
+      <Sidebar/>
+      <div className={`p-5 sm:p-10 sm:ml-64`}>
+        <div class="bg-blue-100 py-4 mt-10">
+            <h1 class="text-2xl text-center font-bold">Create a Job</h1>
+        </div>
+          <form onSubmit={handleFormSubmit} className='border border-gray-300 px-4 py-8 rounded mx-auto max-w-6xl w-full my-5 inputs space-y-6' >
+            <div className="grid grid-flow-row-dense sm:grid-cols-1 md:grid-cols-2 gap-y-0 gap-x-8">
+            <div className="col-span-2 mb-4">
+              <label htmlFor="job_name" className="block text-sm font-semibold font-poppins">
                 Job Name
               </label>
               <input
+                placeholder='Title'
                 type="text"
                 id="job_name"
                 name="job_name"
                 onChange={handleInputChange}
                 value={formData.job_name}
-                className="mt-1 p-2 border rounded-md w-full"
+                className="mt-1 p-2 border border-gray-300 rounded-md w-full"
                 required
               />
             </div>
 
             <div className="mb-4">
-              <label htmlFor="type" className="block text-sm font-bold font-poppins text-gray-600">
+              <label htmlFor="category" className="block text-sm font-semibold font-poppins">
+                Category
+              </label>
+              <input
+                placeholder='Job Category'
+                type="text"
+                id="category"
+                name="category"
+                onChange={handleInputChange}
+                value={formData.category}
+                className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+                required
+              />
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="type" className="block text-sm font-semibold font-poppins">
                 Type
               </label>
               <select
@@ -110,7 +115,7 @@ const CreateJob = () => {
                 name="type"
                 onChange={handleInputChange}
                 value={formData.type}
-                className="mt-1 p-2 border rounded-md w-full"
+                className="mt-1 p-2 border border-gray-300 rounded-md w-full"
                 required
                 >
                 <option value={JobType.FULL_TIME}>Full Time</option>
@@ -120,78 +125,70 @@ const CreateJob = () => {
             </div>
 
             <div className="mb-4">
-              <label htmlFor="category" className="block text-sm font-bold font-poppins text-gray-600">
-                Category
-              </label>
-              <input
-                type="text"
-                id="category"
-                name="category"
-                onChange={handleInputChange}
-                value={formData.category}
-                className="mt-1 p-2 border rounded-md w-full"
-                required
-              />
-            </div>
-
-            <div className="mb-4">
-              <label htmlFor="requirement" className="block text-sm font-bold font-poppins text-gray-600">
-                Requirement
-              </label>
-              <input
-                type="text"
-                id="requirement"
-                name="requirement"
-                onChange={handleInputChange}
-                value={formData.requirement}
-                className="mt-1 p-2 border rounded-md w-full"
-                required
-              />
-            </div>
-
-            <div className="col-span-2 mb-4">
-              <label htmlFor="description" className="block text-sm font-bold font-poppins text-gray-600">
-                Description
-              </label>
-              <textarea
-                id="description"
-                name="description"
-                onChange={handleInputChange}
-                value={formData.description}
-                className="mt-1 p-2 border rounded-md w-full"
-                required
-              ></textarea>
-            </div>
-
-            <div className="mb-4">
-              <label htmlFor="required_skill" className="block text-sm font-bold font-poppins text-gray-600">
+              <label htmlFor="required_skill" className="block text-sm font-semibold font-poppins">
                 Required Skill
               </label>
               <input
+                placeholder='Required Skill'
                 type="text"
                 id="required_skill"
                 name="required_skill"
                 onChange={handleInputChange}
                 value={formData.required_skill}
-                className="mt-1 p-2 border rounded-md w-full"
+                className="mt-1 p-2 border border-gray-300 rounded-md w-full"
                 required
               />
             </div>
 
             <div className="mb-4">
-              <label htmlFor="salary" className="block text-sm font-bold font-poppins text-gray-600">
+              <label htmlFor="salary" className="block text-sm font-semibold font-poppins">
                 Salary
               </label>
               <input
+                placeholder='Salary'
                 type="number"
                 id="salary"
                 name="salary"
                 onChange={handleInputChange}
                 value={formData.salary}
-                className="mt-1 p-2 border rounded-md w-full"
+                className="mt-1 p-2 border border-gray-300 rounded-md w-full"
                 required
               />
             </div>
+
+
+            <div className="col-span-2 mb-4">
+              <label htmlFor="description" className="block text-sm font-semibold font-poppins">
+                Description
+              </label>
+              <textarea
+                placeholder='Job Description'
+                id="description"
+                name="description"
+                onChange={handleInputChange}
+                value={formData.description}
+                className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+                required
+              ></textarea>
+            </div>
+
+            <div className="col-span-2 mb-4">
+              <label htmlFor="requirement" className="block text-sm font-semibold font-poppins">
+                Requirement
+              </label>
+              <textarea
+                placeholder='Job Requirements'
+                type="text"
+                id="requirement"
+                name="requirement"
+                onChange={handleInputChange}
+                value={formData.requirement}
+                className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+                required
+              ></textarea>
+            </div>
+
+            
             </div>
     
             <div className="flex justify-end">
@@ -202,6 +199,7 @@ const CreateJob = () => {
           </form>
           <ToastContainer />
         </div>
+        </>
       );
     };
 
