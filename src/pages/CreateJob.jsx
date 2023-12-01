@@ -23,30 +23,6 @@ const CreateJob = () => {
       salary: '',
     
     });
-  
-    const handleInputChange = (e) => {
-      setFormData({
-        ...formData,
-        [e.target.name]: e.target.value,
-      });
-    };
-  
-    const handleFormSubmit = async (e) => {
-      e.preventDefault();
-  
-      try {
-        await createJob(formData);
-      
-      setFormData({
-        job_name: '',
-        type: JobType.FULL_TIME,
-        category: '',
-        requirement: '',
-        description: '',
-        required_skill: '',
-        salary: '',
-
-    });
 
     const handleInputChange = (e) => {
         setFormData({
@@ -88,7 +64,7 @@ const CreateJob = () => {
             });
 
         }
-    };
+      };
 
     return (
       <>
@@ -172,7 +148,7 @@ const CreateJob = () => {
               </label>
               <input
                 placeholder='Salary'
-                type="number"
+                type="amount"
                 id="salary"
                 name="salary"
                 onChange={handleInputChange}
@@ -226,7 +202,7 @@ const CreateJob = () => {
           <ToastContainer />
         </div>
         </>
-      );
-    };
+    );
+};
 
 export default CreateJob;
