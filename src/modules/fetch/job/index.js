@@ -45,4 +45,13 @@ async function createJob(formData) {
     }
   }
 
-export {getAllJobs, getJobById, getJobsByUserId, updateJob, createJob};
+async function deleteJob(id){
+    try {
+        const response = await instance.delete(`/jobs/${id}`);
+        return response.data;
+    } catch (error) {
+        throw new Error(error.response.data.message || 'Something went wrong');
+    }
+}
+
+export {getAllJobs, getJobById, getJobsByUserId, updateJob, createJob, deleteJob};
