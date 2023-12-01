@@ -1,5 +1,7 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {getAllKanbans, editStatusKanban} from "../modules/fetch/kanban";
+import {toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const KanbanTable = () => {
     const [kanbans, setKanbans] = useState([])
@@ -19,10 +21,19 @@ const KanbanTable = () => {
         try {
             await editStatusKanban(kanbanId, newStatus)
             await fetchKanbansData()
+            toast.success('Update Status Succesfully', {
+                position: toast.POSITION.TOP_CENTER,
+                hideProgressBar: true,
+                autoClose: 3000
+            });
         } catch (e) {
             console.log("Error fetching kanbans", e)
+            toast.error('Error Update Status', {
+                position: toast.POSITION.TOP_CENTER,
+                hideProgressBar: true,
+                autoClose: 5000
+            });
         }
-        console.log(kanbanId, newStatus)
     }
 
     useEffect(() => {
@@ -192,6 +203,7 @@ const KanbanTable = () => {
                     )))}
                 </tbody>
             </table>
+            <ToastContainer />
         </>
     )
 }
