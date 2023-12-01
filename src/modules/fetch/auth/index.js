@@ -1,5 +1,5 @@
 // modules/fetch/auth/index.js
-import { instance } from '@/modules/axios';
+import { instance } from '../../axios/index.js';
 
 const authAPI = {
   // Function to perform user login

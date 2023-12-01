@@ -1,7 +1,6 @@
 import Navbar from "../components/Navbar.jsx";
 import Sidebar from "../components/Sidebar.jsx";
 import KanbanTable from "../components/KanbanTable.jsx";
-import axios from "axios";
 import {useEffect, useState} from "react";
 import {getCountJob, getAppliedJob, getPendingJob} from "../modules/fetch/kanban/index.js";
 

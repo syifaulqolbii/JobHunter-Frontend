@@ -13,7 +13,7 @@ export default function PrivateRoute({
         setIsAuthenticated(true)
       }
       else{
-        navigate("login");
+        navigate("/login");
       }
     }, []);
     return(
