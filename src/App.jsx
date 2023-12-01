@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import PrivateRoute from './components/privateRoute.jsx';
+import PrivateRoute from '@/components/privateRoute.jsx';
 import Dashboard from "./pages/Dashboard";
 import EditProfile from "./pages/EditProfile";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -15,9 +15,21 @@ function App() {
         <>
             <Router>
                 <Routes>
-                    <Route path={"/CreateJob"} element={<CreateJob/>}/>
-                    <Route path={"/dashboard"} element={<Dashboard/>}/>
-                    <Route path={"/homepage"} element={<Homepage/>}/>
+                    <Route path={"/CreateJob"}  element={
+                      <PrivateRoute>
+                        <CreateJob/>
+                      </PrivateRoute>
+                    } />
+                    <Route path={"/dashboard"} element={
+                      <PrivateRoute>
+                        <Dashboard />
+                      </PrivateRoute>
+                    } />
+                    <Route path={"/homepage"} element={
+                      <PrivateRoute>
+                        <Homepage />
+                      </PrivateRoute>
+                    } />     
                     <Route
                       path="/edituser"
                       element={

@@ -1,17 +1,28 @@
-import React from 'react';
-import { Route, Navigate } from 'react-router-dom';
+import { useEffect,useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
-  const token = localStorage.getItem('token');
-
-  return (
-    <Route
-      {...rest}
-      render={(props) =>
-        token ? <Component {...props} /> : <Navigate to="/login" />
+export default function PrivateRoute({
+  children,
+  ...rest
+}) {
+  const navigate = useNavigate();
+    const[isAuthenticated, setIsAuthenticated] = useState(false)
+    useEffect(() =>{
+      const token = localStorage.getItem('token');
+      if (token) {
+        setIsAuthenticated(true)
       }
-    />
-  );
-};
-
-export default PrivateRoute;
+      else{
+        navigate("login");
+      }
+    }, []);
+    return(
+      <div>
+        {isAuthenticated ? (
+          children
+        ) : (
+          <h1>Not Authenticated</h1>
+        )}
+      </div>
+    )
+}
