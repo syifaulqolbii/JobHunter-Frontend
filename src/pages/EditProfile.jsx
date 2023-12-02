@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { toast } from "react-toastify";
+import {toast, ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { updateUserById } from "../modules/fetch/editusers/index";
 import { instance } from "../modules/axios/index";
@@ -320,6 +320,7 @@ const EditProfile = () => {
         </div>
       </form>
       <Footer />
+      <ToastContainer />
     </>
   );
 };

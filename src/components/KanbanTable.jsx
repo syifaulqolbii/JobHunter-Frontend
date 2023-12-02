@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {getAllKanbans, editStatusKanban} from "../modules/fetch/kanban";
+import {getAllKanbans, editStatusKanban, getKanbanByCompany} from "../modules/fetch/kanban";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -8,7 +8,7 @@ const KanbanTable = () => {
     const [loading, setLoading] = useState(true)
     const fetchKanbansData = async () => {
         try {
-            const response = await getAllKanbans()
+            const response = await getKanbanByCompany()
             const kanbansData = response.data;
             setKanbans(kanbansData)
             setLoading(false);

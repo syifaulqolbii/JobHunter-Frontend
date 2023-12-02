@@ -105,7 +105,7 @@ const Header = ({onSearch, searchTerm, setSearchTerm, toggleLoginStatus}) => {
                     )}
 
                     {/* Login/Logout Button in Desktop (shown when mobile menu is closed) */}
-                    <button>
+                    <span>
                         {isLoggedIn ? (
                             <>
                                 <button type="button"
@@ -145,7 +145,7 @@ const Header = ({onSearch, searchTerm, setSearchTerm, toggleLoginStatus}) => {
                                 <LogIn size={18} className="ml-2"/>
                             </Link>
                         )}
-                    </button>
+                    </span>
                 </div>
             </header>
         </div>

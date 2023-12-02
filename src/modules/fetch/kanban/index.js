@@ -9,6 +9,15 @@ async function getAllKanbans() {
     }
 }
 
+async function getKanbanByCompany() {
+    try {
+        const response = await instance.get('/kanbans/kanbanByCompany');
+        return response.data;
+    } catch (error) {
+        throw new Error(error.response.data.message || "Something went wrong");
+    }
+}
+
 async function addKanban(id) {
     try {
         const response = await instance.post(`/kanbans/${id}`);
@@ -58,4 +67,4 @@ async function getPendingJob() {
 
 
 
-export {getAllKanbans, addKanban, editStatusKanban, getCountJob, getAppliedJob, getPendingJob};
+export {getAllKanbans, addKanban, editStatusKanban, getCountJob, getAppliedJob, getPendingJob, getKanbanByCompany};
