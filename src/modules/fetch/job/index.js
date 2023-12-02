@@ -56,7 +56,7 @@ async function deleteJob(id) {
 
 async function detailJob(id) {
   try {
-    const response = await instance.get(`/jobs/${id}`);
+    const response = await instance.get(`/jobs/showCompanyByJob/${id}`);
     return response.data;
   } catch (error) {
     throw new Error(error.response.data.message || "Something went wrong");
