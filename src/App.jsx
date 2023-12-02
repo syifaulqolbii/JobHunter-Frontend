@@ -29,7 +29,12 @@ function App() {
                       <PrivateRoute>
                         <Homepage />
                       </PrivateRoute>
-                    } />     
+                    } />
+                    <Route path={"/history"} element={
+                        <PrivateRoute>
+                            <Homepage />
+                        </PrivateRoute>
+                    } />
                     <Route
                       path="/edituser"
                       element={

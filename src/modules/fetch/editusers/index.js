@@ -10,10 +10,10 @@ const getUserIdFromToken = (token) => {
   }
 };
 // Fungsi untuk pembaruan pengguna berdasarkan ID pengguna
-async function updateUserById(userId, formData) {
+async function updateUserById(id, formData) {
   try {
     // Mengirim data pengguna yang diperbarui ke backend
-    const response = await instance.patch(`users/${userId}`, formData);
+    const response = await instance.patch(`users/${id}`, formData);
     return response.data;
   } catch (error) {
     console.error("Error updating user:", error.message);

@@ -3,7 +3,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-blue-600 py-8">
+    <footer className="bg-blue-500 py-4">
       <p className="text-center text-white">© 2023 JobHunter</p>
     </footer>
   );

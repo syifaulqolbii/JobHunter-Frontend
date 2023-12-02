@@ -11,7 +11,7 @@ const JobCard = ({ job, showDetails }) => {
             <p className="text-gray-700 mb-4">{job.description}</p>
             <Link to={`/detailjob/${job.id}`}
                 onClick={() => showDetails(job)}
-                className="bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600 focus:outline-none focus:ring focus:border-indigo-300"
+                className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600 focus:outline-none focus:ring focus:border-indigo-300"
             >
                 View Details
             </Link>
