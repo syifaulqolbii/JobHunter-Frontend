@@ -11,6 +11,7 @@ import Homepage from "./pages/Homepage.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 import DetailJob from "./pages/DetailJob.jsx";
+import HistoryUser from "./pages/HistoryUser.jsx";
 
 function App() {
   return (
@@ -45,7 +46,7 @@ function App() {
             path={"/history"}
             element={
               <PrivateRoute>
-                <Homepage />
+                <HistoryUser />
               </PrivateRoute>
             }
           />

@@ -105,7 +105,7 @@ const Header = ({onSearch, searchTerm, setSearchTerm, toggleLoginStatus}) => {
                     )}
 
                     {/* Login/Logout Button in Desktop (shown when mobile menu is closed) */}
-                    <span>
+                    <div>
                         {isLoggedIn ? (
                             <>
                                 <button type="button"
@@ -125,11 +125,6 @@ const Header = ({onSearch, searchTerm, setSearchTerm, toggleLoginStatus}) => {
                                                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                                                role="menuitem">Profile</Link>
                                         </li>
-                                        <li>
-                                            <a href="#"
-                                               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                                               role="menuitem">History</a>
-                                        </li>
                                         <li onClick={handleLogout}>
                                         <span href="#"
                                               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
@@ -145,7 +140,7 @@ const Header = ({onSearch, searchTerm, setSearchTerm, toggleLoginStatus}) => {
                                 <LogIn size={18} className="ml-2"/>
                             </Link>
                         )}
-                    </span>
+                    </div>
                 </div>
             </header>
         </div>

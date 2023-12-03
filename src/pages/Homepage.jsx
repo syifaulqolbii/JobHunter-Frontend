@@ -6,6 +6,7 @@ import Slogan from '../components/Slogan';
 import JobCard from '../components/JobCard.jsx';
 import JobDetails from '../components/JobDetails';
 import JobFilter from '../components/JobFilter';
+import Footer from "../components/Footer.jsx";
 
 const instance = axios.create({
     baseURL: 'http://localhost:3000/api/v1',
@@ -112,6 +113,7 @@ const Homepage = () => {
                     <JobDetails job={selectedJob} hideDetails={hideJobDetails} isLoggedIn={isLoggedIn}/>
                 </div>
             )}
+            <Footer/>
         </div>
     );
 };

@@ -11,7 +11,7 @@ async function getAllJobs() {
 
 async function getJobById(id) {
   try {
-    const response = await instance.get(`/jobs/id/${id}`);
+    const response = await instance.get(`/jobs/${id}`);
     return response.data;
   } catch (error) {
     throw new Error(error.response.data.message || "Something went wrong");
@@ -20,7 +20,7 @@ async function getJobById(id) {
 
 async function getJobsByUserId() {
   try {
-    const response = await instance.get(`/jobs/userId`);
+    const response = await instance.get(`/jobs/company`);
     return response.data;
   } catch (error) {
     throw new Error(error.response.data.message || "Something went wrong");
@@ -29,7 +29,7 @@ async function getJobsByUserId() {
 
 async function updateJob(id, formData) {
   try {
-    const response = await instance.put(`/jobs/${id}`, formData);
+    const response = await instance.patch(`/jobs/${id}`, formData);
     return response.data;
   } catch (error) {
     throw new Error(error.response.data.message || "Something went wrong");

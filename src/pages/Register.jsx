@@ -6,6 +6,7 @@ import Navbar from "../components/Navbar.jsx";
 const Register = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [address, setAddress] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [role, setRole] = useState('user');
@@ -21,7 +22,7 @@ const Register = () => {
             }
 
             // Make an API call to register the user
-            await authAPI.register({name, email, password, role});
+            await authAPI.register({name, email, address, password, role});
 
             // Redirect to login page after successful registration
             navigate('/login');
@@ -62,6 +63,14 @@ const Register = () => {
                                            placeholder="name@mail.com" required=""/>
                                 </div>
                                 <div>
+                                    <label htmlFor="addres"
+                                           className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
+                                    <input type="text" name="address" id="address" value={address}
+                                           onChange={(e) => setAddress(e.target.value)}
+                                           className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                           placeholder="Solo, Jawa Tengah" required=""/>
+                                </div>
+                                <div>
                                     <label htmlFor="password"
                                            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
                                     <input type="password" name="password" id="password" value={password}
@@ -73,7 +82,7 @@ const Register = () => {
                                     <label htmlFor="confirm-password"
                                            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm
                                         password</label>
-                                    <input type="confirm-password" name="confirm-password" id="confirm-password"
+                                    <input type="password" name="confirm-password" id="confirm-password"
                                            value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}
                                            placeholder="••••••••"
                                            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
