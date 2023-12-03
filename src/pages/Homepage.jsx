@@ -9,7 +9,7 @@ import JobFilter from '../components/JobFilter';
 import Footer from "../components/Footer.jsx";
 
 const instance = axios.create({
-    baseURL: 'https://caring-climbing-shad.ngrok-free.app/api/v1',
+    baseURL: 'http://localhost:3000/api/v1',
 });
 
 const Homepage = () => {
@@ -36,7 +36,6 @@ const Homepage = () => {
                 setLoading(false);
             }
         };
-
         fetchData();
     }, []);
 

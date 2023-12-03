@@ -17,6 +17,7 @@ const DetailJob = () => {
             const fetchDetailJob = async () => {
                 const response = await detailJob(id);
                 const detailJobData = response.data;
+                console.log(detailJobData);
                 const dataUser = response.data.User;
                 setDetail(detailJobData);
                 setUser(dataUser);
